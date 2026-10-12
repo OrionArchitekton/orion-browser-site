@@ -66,9 +66,10 @@ export function renderBakedBody(data: ProductData): string {
     )
     .join('');
 
-  // First quickstart block is the install command — the most load-bearing line
-  // for an answer engine summarizing "how do I install this".
-  const installBlock = quickstart.blocks[0];
+  const quickstartBlocks = quickstart.blocks.map((block) => [
+    `<p>${escapeHtml(block.title)}${block.note ? ` (${escapeHtml(block.note)})` : ''}:</p>`,
+    `<pre><code>${escapeHtml(block.command)}</code></pre>`,
+  ].join('')).join('');
 
   // Self-contained, answer-first product passage for raw-HTML crawlers, wrapped
   // in the same <main id="main-content"> landmark + skip link the live app
@@ -89,8 +90,7 @@ export function renderBakedBody(data: ProductData): string {
     `<section>`,
     `<h2>${escapeHtml(quickstart.heading)}</h2>`,
     `<p>${escapeHtml(quickstart.intro)}</p>`,
-    `<p>${escapeHtml(installBlock.title)}${installBlock.note ? ` (${escapeHtml(installBlock.note)})` : ''}:</p>`,
-    `<pre><code>${escapeHtml(installBlock.command)}</code></pre>`,
+    quickstartBlocks,
     `</section>`,
     `<section>`,
     `<h2>Command surface</h2>`,

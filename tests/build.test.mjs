@@ -9,6 +9,9 @@ test('built page identifies the tool and exposes canonical source and guide with
   assert.match(html, /github\.com\/OrionArchitekton\/orion-browser-oss/);
   assert.match(html, /guides\/multi-agent-browser-pool/);
   assert.match(html, /not a sandbox/);
+  assert.match(html, /orion-browser setup/);
+  assert.match(html, /orion-browser --json lease anon --holder agent-42/);
+  assert.match(html, /orion-browser --json release anon --holder agent-42/);
   assert.doesNotMatch(html, /mcp-context-budget|pypi\.org|v0\.4\.0/);
 });
 
