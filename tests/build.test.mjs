@@ -37,7 +37,16 @@ test('visitors can watch the disclosed demo and read its transcript without Java
   assert.match(video, /\bplaysinline\b/);
   assert.match(video, /preload="none"/);
   assert.doesNotMatch(video, /\bautoplay\b/);
-  assert.match(video, /kind="captions"[^>]*srclang="en"/);
+  const track = video.match(/<track\b[^>]*>/)?.[0];
+  assert.ok(track, 'demo must include a captions track');
+  assert.match(track, /kind="captions"/);
+  assert.match(track, /srclang="en"/);
+  assert.match(track, /src="\/works\/orion-browser\/media\/[^"?#]+\.vtt"/);
+  assert.match(video, /poster="\/works\/orion-browser\/media\/[^"?#]+\.jpg"/);
+  const source = video.match(/<source\b[^>]*>/)?.[0];
+  assert.ok(source, 'demo must include a playable source');
+  assert.match(source, /src="\/works\/orion-browser\/media\/[^"?#]+\.mp4"/);
+  assert.match(source, /type="video\/mp4"/);
   assert.match(html, /scripted workers and fictional accounts/);
   assert.match(html, /<summary>Read the transcript<\/summary>/);
   assert.match(html, /Two AI agents can have separate conversations/);
