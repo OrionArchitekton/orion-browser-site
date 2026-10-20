@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PRODUCT_DATA } from './constants';
 import type { DemoLine } from './types';
 
@@ -16,6 +16,9 @@ const CommandBlock: React.FC<{ title: string; note?: string; command: string }> 
   command,
 }) => {
   const [copied, setCopied] = useState(false);
+
+  const [copyReady, setCopyReady] = useState(false);
+  useEffect(() => setCopyReady(Boolean(navigator.clipboard)), []);
 
   const copy = () => {
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
@@ -38,6 +41,7 @@ const CommandBlock: React.FC<{ title: string; note?: string; command: string }> 
         </pre>
         <button
           onClick={copy}
+          disabled={!copyReady}
           className="no-print absolute top-2 right-2 text-[10px] uppercase tracking-wider font-mono text-neutral-400 hover:text-white bg-neutral-900/70 backdrop-blur-sm border border-neutral-700 hover:border-neutral-400 rounded px-2 py-1 transition-colors"
           aria-label={`Copy command: ${title}`}
         >
@@ -126,8 +130,8 @@ const App: React.FC = () => {
               className="w-full rounded-md bg-neutral-900 aspect-video">
               <source src={video.src} type="video/mp4" />
               <track kind="captions" srcLang="en" label="English" src={video.captions} />
-              <a href={video.src}>Download the demo video</a>
             </video>
+            <a href={video.src} download className="inline-block mt-3 text-sm underline underline-offset-4">Download the demo video</a>
             <figcaption className="text-sm text-neutral-600 mt-3 leading-relaxed">{video.disclosure}</figcaption>
           </figure>
           <details className="mt-3 text-sm text-neutral-600 leading-relaxed">
@@ -234,7 +238,7 @@ const App: React.FC = () => {
           </ul>
           <div className="flex flex-col sm:flex-row justify-between">
             <p>{footerNote}</p>
-            <p>&copy; {new Date().getFullYear()} Dan Mercede</p>
+            <p suppressHydrationWarning>&copy; {new Date().getFullYear()} Dan Mercede</p>
           </div>
         </footer>
       </main>
