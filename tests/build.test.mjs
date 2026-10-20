@@ -29,3 +29,23 @@ test('manifest icons and start route resolve under the product subpath', () => {
   assert.equal(manifest.start_url, '/works/orion-browser/');
   for (const icon of manifest.icons) assert.ok(icon.src.startsWith('/works/orion-browser/'));
 });
+
+test('visitors can watch the disclosed demo and read its transcript without JavaScript', () => {
+  const video = html.match(/<video\b[^>]*>[\s\S]*?<\/video>/)?.[0];
+  assert.ok(video, 'initial HTML must include the playable product demo');
+  assert.match(video, /\bcontrols\b/);
+  assert.match(video, /\bplaysinline\b/);
+  assert.match(video, /preload="none"/);
+  assert.doesNotMatch(video, /\bautoplay\b/);
+  assert.match(video, /kind="captions"[^>]*srclang="en"/);
+  assert.match(html, /scripted workers and fictional accounts/);
+  assert.match(html, /<summary>Read the transcript<\/summary>/);
+  assert.match(html, /Two AI agents can have separate conversations/);
+  const media = [...html.matchAll(/(?:src|poster)="(\/works\/orion-browser\/media\/[^"?#]+)"/g)].map(m => m[1]);
+  for (const extension of ['mp4', 'jpg', 'vtt']) {
+    assert.ok(media.some(path => path.endsWith('.' + extension)), extension);
+  }
+  for (const asset of media) {
+    assert.ok(existsSync(new URL('../dist/' + asset.replace('/works/orion-browser/', ''), import.meta.url)), asset);
+  }
+});

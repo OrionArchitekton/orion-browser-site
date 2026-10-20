@@ -1,0 +1,121 @@
+WEBVTT
+
+1
+00:00:00.245 --> 00:00:03.230
+Two AI agents can have separate conversations
+
+2
+00:00:03.245 --> 00:00:05.250
+and still fight over the same browser.
+
+3
+00:00:06.105 --> 00:00:06.810
+What did I do?
+
+4
+00:00:07.245 --> 00:00:08.570
+I built a browser pool
+
+5
+00:00:08.585 --> 00:00:11.210
+to give each identity its own profile
+
+6
+00:00:11.225 --> 00:00:13.230
+and one owner at a time.
+
+7
+00:00:13.925 --> 00:00:16.930
+Here, two scripted workers use fictional accounts.
+
+8
+00:00:17.205 --> 00:00:19.590
+Each has its own Chrome profile and screen.
+
+9
+00:00:19.845 --> 00:00:21.350
+Both save a different note.
+
+10
+00:00:22.205 --> 00:00:22.905
+Now watch.
+
+11
+00:00:23.485 --> 00:00:25.590
+A third worker asks for Studio browser.
+
+12
+00:00:25.725 --> 00:00:26.730
+It gets BUSY.
+
+13
+00:00:26.935 --> 00:00:28.830
+Well, the current worker keeps its page.
+
+14
+00:00:28.845 --> 00:00:30.830
+So what happens next?
+
+15
+00:00:31.185 --> 00:00:32.290
+After a clean release,
+
+16
+00:00:32.305 --> 00:00:34.410
+the next worker starts a new session.
+
+17
+00:00:34.605 --> 00:00:36.430
+The old connection is done.
+
+18
+00:00:36.445 --> 00:00:37.370
+It stops working.
+
+19
+00:00:37.645 --> 00:00:39.070
+But the identity and saved note
+
+20
+00:00:39.085 --> 00:00:40.190
+are all still there.
+
+21
+00:00:40.545 --> 00:00:43.190
+This is an open source MIT license,
+
+22
+00:00:43.205 --> 00:00:45.890
+and it runs on Linux or WSL.
+
+23
+00:00:46.845 --> 00:00:49.090
+So it works with your existing browser driver.
+
+24
+00:00:49.185 --> 00:00:51.030
+There's also a guide and a source
+
+25
+00:00:51.045 --> 00:00:52.250
+that are linked below.
+
+26
+00:00:52.545 --> 00:00:53.530
+Go ahead and give it a try
+
+27
+00:00:53.545 --> 00:00:54.250
+with two browsers,
+
+28
+00:00:54.265 --> 00:00:56.390
+and make sure you tell me what you think
+
+29
+00:00:56.405 --> 00:00:58.370
+and feel free to contribute.
+
+30
+00:00:58.385 --> 00:00:59.085
+Thank you.
