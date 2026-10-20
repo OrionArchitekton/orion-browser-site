@@ -2,7 +2,7 @@
 verified: 2026-10-19
 review_after: 2027-01-19
 topics: [dependencies, dependabot, site-release]
-references: [.github/dependabot.yml, package.json, package-lock.json, .github/workflows/ci.yml, docs/runbooks/product-demo.md]
+references: [.npmrc, .nvmrc, .github/dependabot.yml, package.json, package-lock.json, .github/workflows/ci.yml, docs/runbooks/product-demo.md]
 ---
 
 # Site dependency updates
@@ -10,6 +10,8 @@ references: [.github/dependabot.yml, package.json, package-lock.json, .github/wo
 Dependabot checks npm and Actions weekly. React/runtime types, Vite/plugin and Tailwind packages travel in their respective families, including major updates. Other minor/patch updates share a routine PR; other major updates stay separate. Security fixes use a separate group and retain GitHub's security-update handling. Groups reduce duplicate PRs; they grant no merge authority and do not change branch protection.
 
 Review release notes and install/build compatibility before merging. Keep React and React DOM versions aligned. TypeScript 7 requires the real React type packages and Vite client declarations for CSS imports; do not hide new type errors by disabling the compiler's strict checks. Vite 8 and React plugin 6 must be updated together. Browser's Tailwind 4 build uses the Vite plugin instead of the removed PostCSS integration; vendor prefixes are handled by that compiler.
+
+Use Node 22.12.0 or newer; `.nvmrc` selects the CI Node 22 family, and `.npmrc` enforces the declared package engine floor. The existing Vercel runtime must satisfy that floor; no project setting is changed by this batch.
 
 Run npm ci, the repository's npm test/build checks, npx tsc --noEmit, npm audit and git diff --check. Verify desktop/mobile rendering and JavaScript-free product-demo playback, seeking, captions, download and delayed startup. Keep the accepted media bytes unchanged. Check the exact current PR head's CI/review results; repair failures and merge conflicts before any authorized merge. An admin merge may satisfy an authorized review override; it is not evidence that checks pass.
 
