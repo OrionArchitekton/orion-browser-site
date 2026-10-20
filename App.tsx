@@ -126,8 +126,10 @@ const App: React.FC = () => {
               className="w-full rounded-md bg-neutral-900 aspect-video">
               <source src={video.src} type="video/mp4" />
               <track kind="captions" srcLang="en" label="English" src={video.captions} />
-              <a href={video.src}>Download the demo video</a>
             </video>
+            <a href={video.src} download className="inline-block mt-3 text-sm underline underline-offset-4">Download the demo video</a>
+            <a href={video.src} download className="inline-block mt-3 text-sm underline underline-offset-4">Download the demo video</a>
+            <a href={video.src} download className="inline-block mt-3 text-sm underline underline-offset-4">Download the demo video</a>
             <figcaption className="text-sm text-neutral-600 mt-3 leading-relaxed">{video.disclosure}</figcaption>
           </figure>
           <details className="mt-3 text-sm text-neutral-600 leading-relaxed">
@@ -234,7 +236,7 @@ const App: React.FC = () => {
           </ul>
           <div className="flex flex-col sm:flex-row justify-between">
             <p>{footerNote}</p>
-            <p>&copy; {new Date().getFullYear()} Dan Mercede</p>
+            <p suppressHydrationWarning>&copy; {new Date().getFullYear()} Dan Mercede</p>
           </div>
         </footer>
       </main>
