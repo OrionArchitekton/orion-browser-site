@@ -16,3 +16,20 @@ the supported host requirements, and can open the source release or setup guide.
 
 Validate at the built HTML boundary and with desktop/mobile browser inspection.
 Deployment and rollback are described in docs/runbooks/release.md.
+
+## Product demo
+
+A visitor can watch the existing human-narrated ownership demonstration before
+the setup instructions, starting playback themselves. The recording demonstrates
+the released version and discloses that it replays real browser captures with
+scripted workers and fictional accounts.
+
+- Playback, seeking, volume and fullscreen use standard browser controls.
+- The page does not autoplay or preload the full recording.
+- English captions and an expandable transcript accompany the recording.
+- The same recording and disclosure are available without JavaScript.
+- Video, poster and captions resolve through the Works subpath rewrite.
+- Source, guide, quickstart and security information remain accessible.
+
+Test seams: built-page checks for initial HTML and packaged assets, followed by
+desktop/mobile playback and seeking with and without JavaScript.

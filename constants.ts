@@ -6,6 +6,14 @@ export const PRODUCT_DATA: ProductData = {
   "credibility": "MIT licensed · Linux + systemd · Persistent profiles · CLI + MCP",
   "canonical": "https://www.danmercede.com/works/orion-browser/",
   "metaDescription": "A local Chrome pool for cooperative AI agents: persistent profiles, independent virtual screens, exclusive leases, and CDP endpoints for your existing browser driver.",
+  "video": {
+    "title": "Watch browser ownership in one minute",
+    "src": "/works/orion-browser/media/orion-browser-demo.mp4",
+    "poster": "/works/orion-browser/media/orion-browser-demo.jpg",
+    "captions": "/works/orion-browser/media/orion-browser-demo.vtt",
+    "disclosure": "59.6 seconds, narrated by Dan. An edited walkthrough of v0.1.0 using real Chrome captures, scripted workers and fictional accounts.",
+    "transcript": "Two AI agents can have separate conversations and still fight over the same browser. What did I do? I built a browser pool to give each identity its own profile and one owner at a time. Here, two scripted workers use fictional accounts. Each has its own Chrome profile and screen. Both save a different note. Now watch. A third worker asks for Studio browser. It gets BUSY. Well, the current worker keeps its page. So what happens next? After a clean release, the next worker starts a new session. The old connection is done. It stops working. But the identity and saved note are all still there. This is an open source MIT license, and it runs on Linux or WSL. So it works with your existing browser driver. There's also a guide and a source that are linked below. Go ahead and give it a try with two browsers, and make sure you tell me what you think and feel free to contribute. Thank you."
+  },
   "problem": {
     "heading": "One browser. Too many hands.",
     "body": "Two agents share a signed-in browser. One changes the tab while the other fills a form. Focus moves, identity gets mixed up, and the operator has to untangle the work."

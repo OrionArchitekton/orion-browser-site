@@ -29,3 +29,32 @@ test('manifest icons and start route resolve under the product subpath', () => {
   assert.equal(manifest.start_url, '/works/orion-browser/');
   for (const icon of manifest.icons) assert.ok(icon.src.startsWith('/works/orion-browser/'));
 });
+
+test('visitors can watch the disclosed demo and read its transcript without JavaScript', () => {
+  const video = html.match(/<video\b[^>]*>[\s\S]*?<\/video>/)?.[0];
+  assert.ok(video, 'initial HTML must include the playable product demo');
+  assert.match(video, /\bcontrols\b/);
+  assert.match(video, /\bplaysinline\b/);
+  assert.match(video, /preload="none"/);
+  assert.doesNotMatch(video, /\bautoplay\b/);
+  const track = video.match(/<track\b[^>]*>/)?.[0];
+  assert.ok(track, 'demo must include a captions track');
+  assert.match(track, /kind="captions"/);
+  assert.match(track, /srclang="en"/);
+  assert.match(track, /src="\/works\/orion-browser\/media\/[^"?#]+\.vtt"/);
+  assert.match(video, /poster="\/works\/orion-browser\/media\/[^"?#]+\.jpg"/);
+  const source = video.match(/<source\b[^>]*>/)?.[0];
+  assert.ok(source, 'demo must include a playable source');
+  assert.match(source, /src="\/works\/orion-browser\/media\/[^"?#]+\.mp4"/);
+  assert.match(source, /type="video\/mp4"/);
+  assert.match(html, /scripted workers and fictional accounts/);
+  assert.match(html, /<summary>Read the transcript<\/summary>/);
+  assert.match(html, /Two AI agents can have separate conversations/);
+  const media = [...html.matchAll(/(?:src|poster)="(\/works\/orion-browser\/media\/[^"?#]+)"/g)].map(m => m[1]);
+  for (const extension of ['mp4', 'jpg', 'vtt']) {
+    assert.ok(media.some(path => path.endsWith('.' + extension)), extension);
+  }
+  for (const asset of media) {
+    assert.ok(existsSync(new URL('../dist/' + asset.replace('/works/orion-browser/', ''), import.meta.url)), asset);
+  }
+});
