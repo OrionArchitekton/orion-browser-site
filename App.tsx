@@ -128,8 +128,6 @@ const App: React.FC = () => {
               <track kind="captions" srcLang="en" label="English" src={video.captions} />
             </video>
             <a href={video.src} download className="inline-block mt-3 text-sm underline underline-offset-4">Download the demo video</a>
-            <a href={video.src} download className="inline-block mt-3 text-sm underline underline-offset-4">Download the demo video</a>
-            <a href={video.src} download className="inline-block mt-3 text-sm underline underline-offset-4">Download the demo video</a>
             <figcaption className="text-sm text-neutral-600 mt-3 leading-relaxed">{video.disclosure}</figcaption>
           </figure>
           <details className="mt-3 text-sm text-neutral-600 leading-relaxed">

@@ -33,6 +33,8 @@ test('manifest icons and start route resolve under the product subpath', () => {
 test('visitors can watch the disclosed demo and read its transcript without JavaScript', () => {
   const video = html.match(/<video\b[^>]*>[\s\S]*?<\/video>/)?.[0];
   assert.ok(video, 'initial HTML must include the playable product demo');
+  assert.equal((html.match(/>Download the demo video<\/a>/g) || []).length, 1);
+  assert.match(html.replace(/<video\b[^>]*>[\s\S]*?<\/video>/g, ''), /<a\b[^>]*\bdownload=/);
   assert.match(video, /\bcontrols\b/);
   assert.match(video, /\bplaysinline\b/i);
   assert.match(video, /preload="none"/);
