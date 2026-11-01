@@ -1,5 +1,7 @@
 # orion-browser product page
 
+Part of [Cosmocrat OS](https://www.cosmocrat.ai/tools#orion-browser).
+
 Static Vite/React product page for [orion-browser](https://github.com/OrionArchitekton/orion-browser-oss).
 Canonical: https://www.danmercede.com/works/orion-browser/
 
