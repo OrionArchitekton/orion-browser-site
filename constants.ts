@@ -33,18 +33,28 @@ export const PRODUCT_DATA: ProductData = {
     "intro": "Requires Linux with a systemd user instance, Python 3.11+, Google Chrome stable, TigerVNC, noVNC, websockify, xdotool, and xwd. The guide covers prerequisites and operator sign-in.",
     "blocks": [
       {
-        "title": "Install the tagged source",
-        "note": "No PyPI package required",
-        "command": "git clone --branch v0.1.0 https://github.com/OrionArchitekton/orion-browser-oss.git\ncd orion-browser-oss\npython3 -m venv .venv\n. .venv/bin/activate\npython -m pip install ."
+        "title": "Install from PyPI",
+        "note": "Installs the orion-browser and orion-browser-mcp commands",
+        "command": "uv tool install orion-browser-oss==0.1.1\n# or: python -m pip install orion-browser-oss==0.1.1"
       },
       {
         "title": "Prepare the pool",
-        "command": "mkdir -p ~/.config/orion-browser\ncp config.example.toml ~/.config/orion-browser/config.toml\norion-browser setup"
+        "command": "mkdir -p ~/.config/orion-browser\ncfg=~/.config/orion-browser/config.toml\nif [ ! -e \"$cfg\" ]; then  # never replaces a config you already have\n  curl -fsSL https://raw.githubusercontent.com/OrionArchitekton/orion-browser-oss/v0.1.1/config.example.toml \\\n    -o \"$cfg.download\" && mv -n \"$cfg.download\" \"$cfg\"\nfi  # then edit the browsers in it\norion-browser setup"
       },
       {
         "title": "Lease, connect, release",
         "note": "Use the returned endpoint with your CDP driver",
         "command": "orion-browser --json lease anon --holder agent-42\n# Connect your driver to data.endpoint.\n# Complete the task, renewing the lease during long work.\norion-browser --json release anon --holder agent-42"
+      },
+      {
+        "title": "Run the MCP server",
+        "note": "Listed in the official MCP Registry",
+        "command": "uvx --from orion-browser-oss==0.1.1 orion-browser-mcp\n# Stdio server; set a tool timeout of at least 1000 s.\n# MCP Registry name: io.github.OrionArchitekton/orion-browser-oss"
+      },
+      {
+        "title": "Install in Gemini CLI",
+        "note": "Requires uv on PATH",
+        "command": "gemini extensions install https://github.com/OrionArchitekton/orion-browser-oss --ref v0.1.1"
       }
     ]
   },
@@ -137,8 +147,8 @@ export const PRODUCT_DATA: ProductData = {
       "primary": true
     },
     {
-      "label": "v0.1.0 release",
-      "url": "https://github.com/OrionArchitekton/orion-browser-oss/releases/tag/v0.1.0",
+      "label": "v0.1.1 release",
+      "url": "https://github.com/OrionArchitekton/orion-browser-oss/releases/tag/v0.1.1",
       "primary": true
     },
     {

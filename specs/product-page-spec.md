@@ -4,7 +4,8 @@ A developer arriving from Works understands the browser ownership problem, sees
 the supported host requirements, and can open the source release or setup guide.
 
 - The product is orion-browser, MIT licensed, with public source in orion-browser-oss.
-- The page gives complete source-install and setup commands, with prerequisites.
+- The page gives complete PyPI install (`orion-browser-oss`) and setup commands, with
+  prerequisites, plus the MCP launch command, its MCP Registry name and the Gemini CLI install.
 - The page discloses that leases coordinate trusted local agents, do not approve
   account actions, and do not isolate hostile users.
 - One MCP server process is one holder, including subagents.
