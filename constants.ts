@@ -35,7 +35,7 @@ export const PRODUCT_DATA: ProductData = {
       {
         "title": "Install from PyPI",
         "note": "Installs the orion-browser and orion-browser-mcp commands",
-        "command": "uv tool install orion-browser-oss==0.1.1\n# or: python -m pip install orion-browser-oss==0.1.1"
+        "command": "uv tool install orion-browser-oss==0.1.1\n# or with pip, in a virtual environment:\n#   python3 -m venv .venv && . .venv/bin/activate\n#   python -m pip install orion-browser-oss==0.1.1"
       },
       {
         "title": "Prepare the pool",
